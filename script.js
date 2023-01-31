@@ -1,5 +1,5 @@
 var folder = "images/";
-var images = ["resim1.png", "resim2.png", "resim3.png","resim4.png","resim5.png","resim6.png","resim7.png"];
+var images = ["resim1.png", "resim2.png", "resim3.png","resim4.png","resim5.png","resim6.png","resim7.png","resim8.png","resim9.png"];
 
 // Current slide index
 let currentSlide = 0;
