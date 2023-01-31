@@ -1,36 +1,30 @@
-const randomImageBtn = document.querySelector("#randomImageBtn");
-const displayedImage = document.querySelector("#displayedImage");
-const images = [
-  "images/resim1.jpg",
-  "images/resim2.jpg",
-  "images/resim3.jpg"
-];
+var folder = "images/";
+var images = ["resim1.png", "resim2.png", "resim3.png","resim4.png","resim5.png","resim6.png","resim7.png"];
+var i = 0;
 
-randomImageBtn.addEventListener("click", function() {
-  const randomIndex = Math.floor(Math.random() * images.length);
-  displayedImage.src = images[randomIndex];
-});
-
-
-// Retrieve the last image index from cookies
-var lastImageIndex = getCookie("lastImageIndex");
-if (lastImageIndex) {
-  i = parseInt(lastImageIndex);
-  if (i < 0 || i >= images.length) {
+// En son kaldığınız resmi çerezlerden alın
+var lastImage = getCookie("lastImage");
+if (lastImage) {
+  i = images.indexOf(lastImage);
+  if (i == -1 || i >= images.length) {
     i = 0;
   }
 }
 
-function updateImage(step) {
-  i = (i + step + images.length) % images.length;
+function updateImage() {
   var path = folder + images[i];
   document.getElementById("slider").src = path;
+  if (i < images.length - 1) {
+    i++;
+  } else {
+    i = 0;
+  }
   
-  // Save the current image index to cookies
-  setCookie("lastImageIndex", i, 365);
+  // En son kaldığınız resmi çerezlere kaydedin
+  setCookie("lastImage", images[i], 365);
 }
 
-// Read cookie function
+// Çerez okuma fonksiyonu
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -47,7 +41,7 @@ function getCookie(cname) {
   return "";
 }
 
-// Write cookie function
+// Çerez yazma fonksiyonu
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
