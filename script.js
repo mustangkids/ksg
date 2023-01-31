@@ -1,6 +1,16 @@
-var folder = "images/";
-var images = ["resim1.png", "resim2.png", "resim3.png","resim4.png","resim5.png","resim6.png","resim7.png"];
-var i = 0;
+const randomImageBtn = document.querySelector("#randomImageBtn");
+const displayedImage = document.querySelector("#displayedImage");
+const images = [
+  "images/resim1.jpg",
+  "images/resim2.jpg",
+  "images/resim3.jpg"
+];
+
+randomImageBtn.addEventListener("click", function() {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  displayedImage.src = images[randomIndex];
+});
+
 
 // Retrieve the last image index from cookies
 var lastImageIndex = getCookie("lastImageIndex");
