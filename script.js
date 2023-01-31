@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // When moving to the next slide
 function nextSlide() {
-  saveSlide(currentSlide + 1);
-  showSlide(currentSlide + 1);
+  currentSlide = Math.floor(Math.random() * images.length);
+  saveSlide(currentSlide);
+  showSlide(currentSlide);
 }
