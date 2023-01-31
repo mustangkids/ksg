@@ -7,31 +7,33 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="updateImage()">
     <img id="slider" src="images/resim1.png"/>
     <br />
-    <button onclick="updateImage()">Next Image</button>
+    <button onclick="changeImage()">Next Image</button>
   </body>
   <script>
     var folder = "images/";
     var images = ["resim1.png", "resim2.png", "resim3.png","resim4.png","resim5.png","resim6.png","resim7.png"];
     var i = localStorage.getItem("sliderIndex") || 0;
 
-    function updateImage() {
-      var path = folder + images[i];
-      document.getElementById("slider").src = path;
+    function changeImage() {
       if (i < images.length - 1) {
         i++;
       } else {
         i = 0;
       }
       localStorage.setItem("sliderIndex", i);
+      updateImage();
     }
 
-    updateImage();
+    function updateImage() {
+      var path = folder + images[i];
+      document.getElementById("slider").src = path;
+    }
   </script>
 </html>
-<head>
+
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
