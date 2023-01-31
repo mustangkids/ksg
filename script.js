@@ -43,19 +43,20 @@ function setCookie(cname, cvalue, exdays) {
 
 // On page load
 document.addEventListener("DOMContentLoaded", function() {
-  // Load the image without showing it
+  // Load a random image without showing it
+  var randomIndex = Math.floor(Math.random() * images.length);
   var img = new Image();
-  img.src = folder + images[currentSlide];
+  img.src = folder + images[randomIndex];
 
   // Once the image is fully loaded, show it
   img.onload = function() {
-    showSlide(currentSlide);
+    showSlide(randomIndex);
   };
 });
 
 // When moving to the next slide
 function nextSlide() {
-  currentSlide = Math.floor(Math.random() * images.length);
-  saveSlide(currentSlide);
-  showSlide(currentSlide);
+  var randomIndex = Math.floor(Math.random() * images.length);
+  saveSlide(randomIndex);
+  showSlide(randomIndex);
 }
