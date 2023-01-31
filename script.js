@@ -43,17 +43,18 @@ function setCookie(cname, cvalue, exdays) {
 
 // On page load
 document.addEventListener("DOMContentLoaded", function() {
-  showSlide(currentSlide);
+  // Load the image without showing it
+  var img = new Image();
+  img.src = folder + images[currentSlide];
+
+  // Once the image is fully loaded, show it
+  img.onload = function() {
+    showSlide(currentSlide);
+  };
 });
 
 // When moving to the next slide
 function nextSlide() {
   saveSlide(currentSlide + 1);
   showSlide(currentSlide + 1);
-}
-
-// When moving to the previous slide
-function prevSlide() {
-  saveSlide(currentSlide - 1);
-  showSlide(currentSlide - 1);
 }
